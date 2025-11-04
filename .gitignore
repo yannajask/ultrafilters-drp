@@ -1,0 +1,25 @@
+# Ignore all auxiliary and temporary LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.lot
+*.lof
+
+# Ignore generated PDFs
+*.pdf
+
+# Ignore any other temp or intermediate files
+*.gz
+*.dvi
+*.ps
+*.xdv
