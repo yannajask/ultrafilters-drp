@@ -26,6 +26,7 @@
 
 \graphicspath{{Images/}{./}} % Specifies where to look for included images (trailing slash required)
 
+\usepackage{tikz}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
 
 %----------------------------------------------------------------------------------------
@@ -78,10 +79,13 @@
 %\usecolortheme{lily}
 %\usecolortheme{monarca}
 %\usecolortheme{seagull}
-\usecolortheme{seahorse}
+%\usecolortheme{seahorse}
 %\usecolortheme{spruce}
 %\usecolortheme{whale}
 %\usecolortheme{wolverine}
+
+\definecolor{mathpink}{RGB}{239, 96, 173}
+\usecolortheme[named=mathpink]{structure}
 
 %----------------------------------------------------------------------------------------
 %	SELECT FONT THEME & FONTS
@@ -142,11 +146,11 @@
 %	PRESENTATION INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title[Ramsey Theory with Ultrafilters]{Ramsey Theory with Analytic Methods} % The short title in the optional parameter appears at the bottom of every slide, the full title in the main parameter is only on the title page
+\title[Ramsey Theory with Ultrafilters]{Ramsey Theory with Ultrafilters} % The short title in the optional parameter appears at the bottom of every slide, the full title in the main parameter is only on the title page
 
 \subtitle{} % Presentation subtitle, remove this command if a subtitle isn't required
 
-\author[Megan W. \and Yanna J.]{Megan Winterburn \\ Yanna Jaskielewicz \\ Mentor: Jashan Bal} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
+\author[Megan W. \and Yanna J.]{Megan Winterburn, Yanna Jaskielewicz \\ Mentor: Jashan Bal} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
 
 \institute[UW]{University of Waterloo} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
 
@@ -187,11 +191,84 @@
 \begin{frame}
     \frametitle{Introduction to Ramsey Theory}
 
+    What is Ramsey Theory?
+
+    \vspace{10pt}
+
+    \pause
+
+    \begin{quote}
+		A branch of \dots combinatorics that focuses on the appearance of order in a substructure given a structure of a known size.\\
+		--- Wikipedia
+	\end{quote}
+
+    \pause
+
+    \vspace{10pt}
+
+    \begin{quote}
+		Complete disorder is impossible.\\
+		--- Theodore S. Motzkin
+	\end{quote}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to Ramsey Theory}
+
+    \begin{example}
+        Suppose we have a group of six random people. Any two given people are either friends or strangers. Can we always find at least three people who are either all mutual friends or all strangers?
+
+        \pause
+
+        \begin{center}
+            \begin{tikzpicture}[main/.style = {circle, draw=black, minimum size=1.5mm, inner sep=0pt, node distance=1.5cm}]
+                \node[main] (1) at ( 60:1cm) {B};
+                \node[main] (2) at (120:1cm) {A};
+                \node[main] (3) at (180:1cm) {F};
+                \node[main] (4) at (240:1cm) {E};
+                \node[main] (5) at (300:1cm) {D};
+                \node[main] (6) at (360:1cm) {C};
+
+                \draw[red, very thick] (1) -- (2) -- (3) -- (1) -- (4) -- (6);
+                \draw[blue, very thick] (1) -- (5) -- (2) -- (3) -- (4) -- (5) -- (6);
+                \draw[red, very thick] (1) -- (6) -- (3) -- (5);
+                \draw[blue, very thick] (6) -- (2) -- (4);
+            \end{tikzpicture}
+        \end{center}
+    \end{example}
     
+
+    \pause
+
+    The answer is always yes!
+\end{frame}
+
+\begin{frame}
+    \frametitle{Infinite Ramsey Theory}
+
+    We can extend similar notions to the infinitary case:
+
+    \pause
+
+    \vspace{10pt}
+
+    If we colour the edges of an infinite complete graph either red or blue, can we find an infinite complete monochromatic subgraph?
+
+    \pause
+
+    \vspace{10pt}
+
+    The answer is also yes - and we'll use ultrafilters as a tool to prove it!
 \end{frame}
 
 % Filters and ultrafilters
 \section{Ultrafilters}
+
+\begin{frame}
+    \frametitle{Ultrafilters}
+
+\end{frame}
 
 % Filters and ultrafilters
 \section{Infinite Ramsey's Theorem}
