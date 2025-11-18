@@ -195,14 +195,10 @@
 
     \vspace{10pt}
 
-    \pause
-
     \begin{quote}
 		A branch of \dots combinatorics that focuses on the appearance of order in a substructure given a structure of a known size.\\
 		--- Wikipedia
 	\end{quote}
-
-    \pause
 
     \vspace{10pt}
 
@@ -249,8 +245,6 @@
 
     We can extend similar notions to the infinitary case:
 
-    \pause
-
     \vspace{10pt}
 
     If we colour the edges of an infinite complete graph either red or blue, can we find an infinite complete monochromatic subgraph?
@@ -288,7 +282,7 @@
 \section{Infinite Ramsey's Theorem}
 
 % Idempotent ultrafilters
-\section{Idempotent Ultrafilters and Hindman's Theorem}
+\section{Idempotent Ultrafilters and Finite Sums}
 
 \begin{frame}
 	\frametitle{Ultrafilter Addition} % Slide title, remove this command for no title
@@ -300,17 +294,12 @@
         \[\{n \in \mathbb{N}: A \in n + \mathcal{W} \} \in \mathcal{U}\]
         for all \(A \subseteq \mathbb{N}\).
     \end{definition}
-\end{frame}
 
-\begin{frame}
-    \frametitle{Properties of Ultrafilter Addition} % Slide title, remove this command for no title
-	\begin{theorem}
-        If \(\mathcal{U}\) is any ultrafilter on \(\mathbb{N}\) and \(\mathcal{U}_m\) is the principal ultrafilter associated to \(m \in \mathbb{N}\), then \(\mathcal{U}_m + \mathcal{U} = m + \mathcal{U}\).
-    \end{theorem}
     \pause
-    \begin{theorem}
+
+    \begin{example}
         If \(\mathcal{U}_n\) and \(\mathcal{U}_m\) are the principal ultrafilters associated to \(n\in \mathbb{N}\) and \(m \in \mathbb{N}\), respectively, then \(\mathcal{U}_n + \mathcal{U}_m = \mathcal{U}_{n+m}\).
-    \end{theorem}
+    \end{example}
 \end{frame}
 
 \begin{frame}
@@ -321,14 +310,144 @@
     \end{theorem}
     \vspace{10px}
     \pause
-    Why is \(\mathcal{U}\) non-principal?\\[10px]
+    Let \(\mathcal{U}\) be an idempotent ultrafilter on \(\mathbb{N}\), then we have:\\
+
+    \begin{itemize}
+        \item \(\mathcal{U}\) is non-principal
+        \item If \(A \in \mathcal{U}\), then \(A\) is an infinite subset of \(\mathbb{N}\)
+        \item If \(A_1 \sqcup \cdot \cdot \cdot \sqcup A_k = \mathbb{N}\) is a partition, then exactly one of \(A_i \in \mathcal{U}\)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Idempotent Ultrafilters} % Slide title, remove this command for no title
+
+    \begin{definition}
+        Given \(A \subseteq \mathbb{N}\) and \(n \in \mathbb{N}\), define \(A-n\) as the shifted subset given by
+        \[A-n = \{m \in \mathbb{N}: n + m \in A\}.\]
+    \end{definition}
+
     \pause
-    A principal ultrafilter, say \(\mathcal{U}_n\), can't be idempotent as \(\mathcal{U}_n + \mathcal{U}_n = \mathcal{U}_{n + n}\).
+
+    Given an ultrafilter \(\mathcal{U}\), we see that the following are equivalent:
+    \[\{n \in \mathbb{N}: A - n \in \mathcal{U}\} = \{n \in \mathbb{N}: A \in n + \mathcal{U}\}.\]
+
+    \pause
+
+    Then if \(\mathcal{U}\) is idempotent with \(A \in \mathcal{U}\): \pause
+    \begin{itemize}
+        \item \(A \in \mathcal{U} + \mathcal{U}\)
+        \item \(\{n \in \mathbb{N}: A - n \in \mathcal{U}\} \in \mathcal{U}\)
+    \end{itemize}
+
+    \pause
+
+    So, we can define \[A^* = A \cap \{n \in \mathbb{N}: A - n \in \mathcal{U}\},\] and we have that \(A^* \in \mathcal{U}\)!
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Finite Sums}
+
+    \begin{definition}
+        Given a subset \(M \subseteq \mathbb{N}\), the finite sums of \(M\) is the subset FS\((M) \subseteq \mathbb{N}\) such that
+        \[\text{FS}(M) = \Big\{ \sum_{x\in I} x : I \subseteq M \text{ finite nonempty subset} \Big\}.\]
+    \end{definition}
+
+    \pause
+
+    \begin{example}
+        Given \(x,y \in \mathbb{N}\), the finite sums of \(x\) and \(y\) are 
+        \[\text{FS}(\{x, y\}) = \{x, y, x+y\}.\]
+    \end{example}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Schur's Theorem}
+    \begin{theorem}[Schur's Theorem]
+        Given any 2-colouring \(\gamma: \mathbb{N} \to [2]\), there exist distinct \(x,y \in \mathbb{N}\) such that \(\{x, y, x+ y\}\) is a monochromatic subset.
+    \end{theorem}
+
+    \pause
+
+    \vspace{10pt}
+
+    \textit{Proof}. Let \(\mathcal{U}\) be an idempotent ultrafilter on \(\mathbb{N}\) and let \(\gamma: \mathbb{N} \to [2]\) be a 2-colouring on \(\mathbb{N}\), say \textcolor{red}{red} and \textcolor{blue}{blue}.
+    
+    \vspace{10pt}
+
+    \pause
+    
+    So, we can define the sets \(A = \{n \in \mathbb{N}: \gamma(n) = \text{\textcolor{red}{red}}\}\) and \(B = \{n \in \mathbb{N}: \gamma(n) = \text{\textcolor{blue}{blue}}\}\) and observe that \(\mathbb{N} = A \sqcup B\).\\
+    
+    \vspace{10pt}
+
+    \pause
+    
+    Then, exactly one of \(A\) or \(B\) is in \(\mathcal{U}\). Without a loss of generality, suppose that \(A \in \mathcal{U}\).
+\end{frame}
+
+\begin{frame}
+    \frametitle{Proof of Schur's Theorem}
+
+    Since \(\mathcal{U}\) is idempotent, we have \(A^* = A \cap \{n \in \mathbb{N}: A - n \in \mathcal{U}\} \in \mathcal{U}\). So, pick \(x_1 \in A^*\). We get that: \pause
+
+    \begin{itemize}
+        \item \(x_1 \in A\)
+        \item \(A-x_1 \in \mathcal{U}\)
+    \end{itemize}
+
+    \pause
+
+    \vspace{10pt}
+
+    Let \(A_1 = A \cap (A-x_1)\) and pick \(x_2 \in A_1^* = A_1 \cap \{n \in \mathbb{N}: A_1 - n \in \mathcal{U} \}\). Then, we have: \pause
+    \begin{itemize}
+        \item \(x_2 \in A_1\), so \(x_2 \in A\)
+        \item \(x_2 \in A-x_1\) \pause
+    \end{itemize}
+
+    \vspace{10pt}
+
+    Since \(x_2 \in A - x_1\), we have that \(x_1 + x_2 \in A\).\\
+    
+    \vspace{10pt}
+
+    So \(x_1, x_2\), and \(x_1 + x_2\) are all \(\gamma\)-\textcolor{red}{red}!
+
 \end{frame}
 
 \begin{frame}
     \frametitle{Hindman's Theorem}
+
+    We can carry on such a construction indefinitely to obtain an \textit{infinite} subset.
+
+    \begin{theorem}[Hindman's Theorem]
+        Given a subset \(M \subseteq \mathbb{N}\), the finite sums of \(M\) is the subset FS\((M) \subseteq \mathbb{N}\) such that
+        \[\text{FS}(M) = \Big\{ \sum_{x\in I} x : I \subseteq M \text{ finite nonempty subset} \Big\}.\]
+    \end{theorem}
+
 \end{frame}
 
+\begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
+	\frametitle{References}
+	
+	\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below, you may need to use multiple columns and/or reduce the font size further if you have many references
+		\footnotesize % Reduce the font size in the bibliography
+		
+		\bibitem[Tricki]{p1}
+            tricki.com
+			\newblock How to use ultrafilters
+			
+		\bibitem[FB22]{FB22}
+			David J. Fernandez-Bréton
+			\newblock Using ultrafilters to prove Ramsey-type theorems
+			\newblock \emph{American Mathematical Monthly} 129 no. 2 (2022), 116-131
 
-\end{document} 
+		\bibitem[FB21]{FB21}
+			Jashan Bal
+			\newblock Ramsey theory
+	\end{thebibliography}
+\end{frame}
+
+\end{document}
