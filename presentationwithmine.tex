@@ -273,20 +273,67 @@
         
         \begin{enumerate}
             \item \(\mathcal{F}\) is non-empty and \(\emptyset \notin \mathcal{F}\)
-            \item If A, B \(\in \mathcal{F} \) then \(A \cap B \in \mathcal{F}\)
-            \item If \(A \in \mathcal{F}\) and \(B \in \mathcal{P}(n)\) satisfies \(A \subseteq B\) then \(B \in \mathcal{F}\)
+            \item If \(A, B\) \(\in \mathcal{F} \) then \(A \cap B \in \mathcal{F}\)
+            \item If \(A \in \mathcal{F}\) and \(B \in \mathcal{P}(\mathbb{N})\) satisfies \(A \subseteq B\) then \(B \in \mathcal{F}\)
         \end{enumerate}
     \end{definition}
 \end{frame}
 
 \begin{frame}
     \frametitle{Ultrafilters}
+    Specifically, ultrafilters are useful. 
+    \begin{definition}
+        An ultrafilter on \(\mathbb{N}\) is a maximal filter \(\mathcal{U} \subseteq \mathcal{P}(\mathbb{N})\) on \(\mathbb{N}\).
+        i.e. if \(\mathcal{F}\) is another filter on \(\mathbb{N}\) such that \(\mathcal{U} \subseteq \mathcal{F}\) then \(\mathcal{U} = \mathcal{F}\).
+    \end{definition}
+\end{frame}
 
+\begin{frame}
+    \frametitle{Principal Ultrafilters}
+    Some ultrafilters are principal,
+    \begin{definition}
+        Fix \(n \in \mathbb{N}\).
+        The filter \(\mathcal{F}_n \subseteq \mathcal{P}(\mathbb{N})\) defined as
+        \(\mathcal{F}_n := \{A \in \mathcal{P}(\mathbb{N}) : n \in A \} \) 
+        is a principal ultrafilter. 
+    \end{definition}
+    though not all ultrafilters are principal, as we will show now. 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Existence of a Non-Principal Ultrafilter on \(\mathbb{N}\)}
+    First consider the Fr\'echet Filter, defined as the set of all co-finite subsets.
+    (i.e. it contains all power sets \(A\) of the natural numbers such that \(\mathbb{N} \setminus A\) is finite.)
+    
+    \vspace{10pt}
+    It can be proven with Zorn's Lemma that if \(\mathcal{F}\) is a filter on \(\mathbb{N}\), then there exists an ultrafilter \(\mathcal{U}\) such that \(\mathcal{F} \subseteq \mathcal{U}\)
+    \vspace{10pt}
+    Applying this to the Fr\'echet Filter is used to prove the existence of a non-principal ultrafilter. 
+    This is since there must be an ultrafilter, \(\mathcal{U}\) containing the Fr\'echet Filter.
+    Then if \(A \subseteq \mathbb{N}\) is a finite set it cannot be in \(\mathcal{U}\).
+    Then by definition of the Fr\'echet Filter, \(\mathbb{N} \setminus A\) is in the Fr\'echet Filter which is a subset of \(\mathcal{U}\).
+    So \(\mathcal{U}\) cannot be a principal ultrafilter. 
 \end{frame}
 
 % Filters and ultrafilters
 \section{Infinite Ramsey's Theorem}
-
+\begin{frame}
+    \frametitle{Proof of Infinite Ramsey Theorem}
+    The proof is quite long so we will provide a general idea.
+    \vspace{10pt}
+    Consider the complete graph on the natural numbers, a red-blue colouring on this graph, and \(\mathcal{U}\), a non-principal ultrafilter on \(\mathbb{N}\).
+    \vspace{10pt}
+    Fixing a particular vertex \(v\) we can partion \(\mathbb{N}\) into a set containing:
+    \begin{enumerate}
+        \item \(v\) itself 
+        \item a set containg all vertices which share a red edge with \(v\)
+        \item and a set containg all vertices which share a blue edge with \(v\)
+    \end{enumerate}
+     Now since \(\mathcal{U}\) is non-principal \(v\) is not in \(\mathcal{U}\)
+     So it must be that one of the other sets is.
+     If for example it is the blue set you can keep picking vertices infinitely in that set which are in their blue set to get a monochromatic subgraph.
+     The same applies for if it is the red set. 
+\end{frame}
 % Idempotent ultrafilters
 \section{Idempotent Ultrafilters and Hindman's Theorem}
 
