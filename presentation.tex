@@ -346,10 +346,15 @@
     \pause
     \begin{enumerate}
         \item \(v\) itself 
-        \item a set containg all vertices which share a red edge with \(v\)
-        \item and a set containg all vertices which share a blue edge with \(v\)
+        \item a set containing all vertices which share a red edge with \(v\)
+        \item and a set containing all vertices which share a blue edge with \(v\)
     \end{enumerate}
-     Now since \(\mathcal{U}\) is non-principal the set only containg \(v\) is not in \(\mathcal{U}\)
+
+    \vspace{10pt}
+
+    \pause
+
+     Now since \(\mathcal{U}\) is non-principal the set only containing \(v\) is not in \(\mathcal{U}\).
      So it must be that one of the other sets is by the second important property we provided above.
      If, for example, it is the blue set you can keep picking vertices infinitely in that set which are in their blue set to get a monochromatic subgraph.
      The same applies for if it is the red set. 
@@ -358,17 +363,23 @@
 \section{Idempotent Ultrafilters and Finite Sums}
 
 \begin{frame}
-    \frametitle{Ultrafitler Shift}
+    \frametitle{Ultrafilter Addition}
     \begin{definition}
         Given an ultrafilter \(\mathcal{U}\) on \(\mathbb{N}\) and \(n \in \mathbb{N}\), we can define the shifted ultrafilter \(n + \mathcal{U}\) such that \(A \in n + \mathcal{U}\) if and only if
-        \(\{m \in \mathbb{N} : n + m \in A\} \in \mathcal{U}\) for all \(A \subseteq \mathbb{N}\).
+        \[\{m \in \mathbb{N} : n + m \in A\} \in \mathcal{U}\] for all \(A \subseteq \mathbb{N}\).
     \end{definition}
-    \end{frame}
+
+    \pause
+
+    \vspace{10pt}
+
+    Importantly, we get that \(n + \mathcal{U}\) is also an ultrafilter.
+\end{frame}
 
 \begin{frame}
-	\frametitle{Ultrafilter Addition} % Slide title, remove this command for no title
-	
-    Recall that we defined \(n + \mathcal{U}\) for an ultrafilter \(\mathcal{U}\) and \(n \in \mathbb{N}\). We can extend this notation to define addition between two ultrafilters:\\[10pt]
+    \frametitle{Ultrafilter Addition}
+
+    We can extend this notion to define addition between two ultrafilters:\\[10pt]
 
 	\begin{definition}
         Let \(\mathcal{U}\) and \(\mathcal{W}\) be ultrafilters on \(\mathbb{N}\). We define \(\mathcal{W} + \mathcal{U}\) such that \(A \in \mathcal{W} + \mathcal{U}\) if and only if
@@ -504,10 +515,15 @@
     We can carry on such a construction indefinitely to obtain an \textit{infinite} subset.
 
     \begin{theorem}[Hindman's Theorem]
-        Given a subset \(M \subseteq \mathbb{N}\), the finite sums of \(M\) is the subset FS\((M) \subseteq \mathbb{N}\) such that
-        \[\text{FS}(M) = \Big\{ \sum_{x\in I} x : I \subseteq M \text{ finite nonempty subset} \Big\}.\]
+        Let \(\gamma: \mathbb{N} \to [2]\) be a 2-colouring of \(\mathbb{N}\). Then there exists an infinite subset \(M \subseteq \mathbb{N}\) such that FS(\(M\)) is monochromatic.
     \end{theorem}
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Last slide}
+
+    Placeholder last slide
 \end{frame}
 
 \begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
@@ -528,7 +544,10 @@
 		\bibitem[FB21]{FB21}
 			Jashan Bal
 			\newblock Ramsey theory
+
 	\end{thebibliography}
+
+    these are unfinished*
 \end{frame}
 
 \end{document}
