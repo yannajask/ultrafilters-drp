@@ -219,25 +219,33 @@
 
         \begin{center}
             \begin{tikzpicture}[main/.style = {circle, draw=black, minimum size=1.5mm, inner sep=0pt, node distance=1.5cm}]
-                \node[main] (1) at ( 60:1cm) {B};
-                \node[main] (2) at (120:1cm) {A};
-                \node[main] (3) at (180:1cm) {F};
-                \node[main] (4) at (240:1cm) {E};
-                \node[main] (5) at (300:1cm) {D};
-                \node[main] (6) at (360:1cm) {C};
+                \begin{scope}[shift={(-1.5cm, 0)}]
+                    \node[main] (1) at ( 60:1cm) {B};
+                    \node[main] (2) at (120:1cm) {A};
+                    \node[main] (3) at (180:1cm) {F};
+                    \node[main] (4) at (240:1cm) {E};
+                    \node[main] (5) at (300:1cm) {D};
+                    \node[main] (6) at (360:1cm) {C};
 
-                \draw[red, very thick] (1) -- (2) -- (3) -- (1) -- (4) -- (6);
-                \draw[blue, very thick] (1) -- (5) -- (2) -- (3) -- (4) -- (5) -- (6);
-                \draw[red, very thick] (1) -- (6) -- (3) -- (5);
-                \draw[blue, very thick] (6) -- (2) -- (4);
+                    \draw[red, very thick] (1) -- (2) -- (3) -- (1) -- (4) -- (6);
+                    \draw[blue, very thick] (1) -- (5) -- (2) -- (3) -- (4) -- (5) -- (6);
+                    \draw[red, very thick] (1) -- (6) -- (3) -- (5);
+                    \draw[blue, very thick] (6) -- (2) -- (4);
+                \end{scope}
+                \begin{scope}[shift={(1.5cm, 0)}]
+                    \node[main] (2) at (120:1cm) {A};
+                    \node[main] (5) at (300:1cm) {D};
+                    \node[main] (6) at (360:1cm) {C};
+
+                    \draw[blue, very thick] (2) -- (5) -- (6) -- (2);
+                \end{scope}
             \end{tikzpicture}
         \end{center}
     \end{example}
     
-
     \pause
 
-    The answer is always yes!
+    In every case, the answer is yes!
 \end{frame}
 
 \begin{frame}
@@ -247,11 +255,42 @@
 
     \vspace{10pt}
 
-    If we colour the edges of an infinite complete graph either red or blue, can we find an infinite complete monochromatic subgraph?
+    If we colour the edges of an infinite complete graph either \textcolor{red}{red} or \textcolor{blue}{blue}, can we find an infinite complete \textit{monochromatic} subgraph?
 
     \pause
 
-    \vspace{10pt}
+    \begin{center}
+        \begin{tikzpicture}[main/.style = {circle, draw=black, minimum size=1.5mm, inner sep=0pt, node distance=1.5cm}]
+            \begin{scope}[shift={(-2cm, 0)}]
+                \node[main] (1) at ( 90:1cm) {};
+                \node[main] (2) at (162:1cm) {};
+                \node[main] (3) at (234:1cm) {};
+                \node[main] (4) at (306:1cm) {};
+                \node[main] (5) at ( 18:1cm) {};
+
+                \draw[red, very thick] (1) -- (2) -- (3) -- (4) -- (5) -- (1);
+                \draw[red, very thick] (1) -- (3) -- (5) -- (4) -- (1);
+                \draw [red, very thick] (4) -- (2) -- (5);
+
+                \node at (0, -1.5) {\small{Monochromatic}};
+            \end{scope}
+                \begin{scope}[shift={(2cm, 0)}]
+                \node[main] (1) at ( 90:1cm) {};
+                \node[main] (2) at (162:1cm) {};
+                \node[main] (3) at (234:1cm) {};
+                \node[main] (4) at (306:1cm) {};
+                \node[main] (5) at ( 18:1cm) {};
+
+                \draw[red, very thick] (1) -- (2) -- (3) -- (4) -- (5) -- (1);
+                \draw[red, very thick] (1) -- (3) -- (5) -- (4) -- (1);
+                \draw [blue, very thick] (4) -- (2) -- (5);
+
+                \node at (0, -1.5) {\small{Not monochromatic}};
+            \end{scope}
+        \end{tikzpicture}
+    \end{center}
+
+    \pause
 
     The answer is also yes - and we'll use ultrafilters as a tool to prove it!
 \end{frame}
@@ -262,38 +301,141 @@
 \begin{frame}
     \frametitle{Filters}
     An important tool for use in proving the Infinite Ramsey Theorem is a filter.
+    \pause
     \begin{definition}
         A Filter \(\mathcal{F}\) on \(\mathbb{N}\) is a set of subsets of \(\mathbb{N}\) which satisfy the following conditions. 
-        
+        \pause
         \begin{enumerate}
             \item \(\mathcal{F}\) is non-empty and \(\emptyset \notin \mathcal{F}\)
             \item If A, B \(\in \mathcal{F} \) then \(A \cap B \in \mathcal{F}\)
-            \item If \(A \in \mathcal{F}\) and \(B \in \mathcal{P}(n)\) satisfies \(A \subseteq B\) then \(B \in \mathcal{F}\)
+            \item If \(A \in \mathcal{F}\) and \(B \in \mathcal{P}(\mathbb{N})\) satisfies \(A \subseteq B\) then \(B \in \mathcal{F}\)
         \end{enumerate}
     \end{definition}
 \end{frame}
 
 \begin{frame}
     \frametitle{Ultrafilters}
+    Specifically, ultrafilters are useful. 
+    \pause
+    \begin{definition}
+        An ultrafilter on \(\mathbb{N}\) is a maximal filter \(\mathcal{U} \subseteq \mathcal{P}(\mathbb{N})\) on \(\mathbb{N}\).
+        i.e. if \(\mathcal{F}\) is another filter on \(\mathbb{N}\) such that \(\mathcal{U} \subseteq \mathcal{F}\) then \(\mathcal{U} = \mathcal{F}\).
+    \end{definition}
+\end{frame}
 
+\begin{frame}
+    \frametitle{Principal Ultrafilters}
+    Some ultrafilters are principal,
+    \pause
+    \begin{definition}
+        Fix \(n \in \mathbb{N}\).
+        The filter \(\mathcal{F}_n\) is a principal ultrafilter if it contains all subsets of \(\mathbb{N}\) that include the element \(n\). 
+    \end{definition}
+    \pause
+    though not all ultrafilters are principal, as we will show now. 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Existence of a Non-Principal Ultrafilter on \(\mathbb{N}\)}
+    First consider the Fr\'echet Filter, defined as the set of all co-finite subsets.
+    (i.e. it contains all power sets \(A\) of the natural numbers such that \(\mathbb{N} \setminus A\) is finite.)
+    \pause
+    \vspace{10pt}
+    \break It can be proven with Zorn's Lemma that if \(\mathcal{F}\) is a filter on \(\mathbb{N}\), then there exists an ultrafilter \(\mathcal{U}\) such that \(\mathcal{F} \subseteq \mathcal{U}\)
+    \pause
+    \vspace{10pt}
+    \break Applying this to the Fr\'echet Filter is used to prove the existence of a non-principal ultrafilter. 
+    This is since there must be an ultrafilter, \(\mathcal{U}\) containing the Fr\'echet Filter. \break
+    \pause
+    Then if \(A \subseteq \mathbb{N}\) is a finite set it cannot be in \(\mathcal{U}\). \break
+    Then by definition of the Fr\'echet Filter, \(\mathbb{N} \setminus A\) is in the Fr\'echet Filter which is a subset of \(\mathcal{U}\). \break
+    So \(\mathcal{U}\) cannot be a principal ultrafilter. 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Important Property of Ultrafilters (1)}
+    Let \(\mathcal{F}\) be a filter on \(\mathbb{N}\). 
+    \pause
+    \vspace{10pt}
+    \break Then \(\mathcal{F}\) is an ultrafilter if and only if for every \(A \subseteq \mathbb{N}\), either \(A \in \mathcal{F}\) or \(\mathbb{N} \setminus A \in \mathcal{F}\).
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Important Property of Ultrafilters (2)}
+    Let \(\mathcal{U}\) be an ultrafilter on \(\mathbb{N}\) and \(A_1, A_2, ..., A_n \subseteq \mathbb{N}\).
+    \pause
+    \vspace{10pt}
+    \break If \(A_1 \cup A_2 \cup ... \cup A_n = \bigcup\limits_{i=1}^{n} A_{i} \in \mathcal{U}\),
+    \vspace{10pt}
+    \break then there exists \(1 \leq j \leq n\), such that \(A_j \in \mathcal{U}\).\\
+    \pause
+    \vspace{10pt}
+    If \(\mathcal{U}\) is non-principal, then we get a useful result:\\
+    \vspace{10pt}
+    % Note: the square cup means its a disjoint union (hence a partition)
+    If \(A_1 \sqcup \cdot \cdot \cdot \sqcup A_n = \mathbb{N}\) is a partition, then exactly one of \(A_j \in \mathcal{U}\).
 \end{frame}
 
 % Filters and ultrafilters
 \section{Infinite Ramsey's Theorem}
+\begin{frame}
+    \frametitle{Proof of Infinite Ramsey Theorem}
+    The proof is quite long so we will provide a general idea.
+    \pause
+    \vspace{10pt}
+    \break Consider the complete graph on the natural numbers, a red-blue colouring on this graph, and \(\mathcal{U}\), a non-principal ultrafilter on \(\mathbb{N}\).
+    \vspace{10pt}
+    \pause
+    Fixing a particular vertex \(v\) we can partion \(\mathbb{N}\) into a set containing:
+    \pause
+    \begin{enumerate}
+        \item \(v\) itself 
+        \item a set containing all vertices which share a red edge with \(v\)
+        \item and a set containing all vertices which share a blue edge with \(v\)
+    \end{enumerate}
 
+    \vspace{10pt}
+
+    \pause
+
+     Now since \(\mathcal{U}\) is non-principal the set only containing \(v\) is not in \(\mathcal{U}\).
+     So it must be that one of the other sets is by the second important property we provided above.
+     If, for example, it is the blue set you can keep picking vertices infinitely in that set which are in their blue set to get a monochromatic subgraph.
+     The same applies for if it is the red set. 
+\end{frame}
 % Idempotent ultrafilters
 \section{Idempotent Ultrafilters and Finite Sums}
 
 \begin{frame}
-	\frametitle{Ultrafilter Addition} % Slide title, remove this command for no title
-	
-    Recall that we defined \(n + \mathcal{U}\) for an ultrafilter \(\mathcal{U}\) and \(n \in \mathbb{N}\). We can extend this notation to define addition between two ultrafilters:\\[10pt]
+    \frametitle{Ultrafilter Addition}
+    \begin{definition}
+        Given \(A \subseteq \mathbb{N}\) and \(n \in \mathbb{N}\), define \(A-n\) as the shifted subset given by
+        \[A-n = \{m \in \mathbb{N}: n + m \in A\}.\]
+    \end{definition}
+
+    \vspace{10pt}
+
+    \pause 
+
+    We can extend this notion to define addition between ultrafilters:\\[10pt]
 
 	\begin{definition}
-        Let \(\mathcal{U}\) and \(\mathcal{W}\) be ultrafilters on \(\mathbb{N}\). We define \(\mathcal{W} + \mathcal{U}\) such that \(A \in \mathcal{W} + \mathcal{U}\) if and only if
-        \[\{n \in \mathbb{N}: A \in n + \mathcal{W} \} \in \mathcal{U}\]
-        for all \(A \subseteq \mathbb{N}\).
+        Let \(\mathcal{U}\) and \(\mathcal{W}\) be ultrafilters on \(\mathbb{N}\). We define \(\mathcal{W} + \mathcal{U}\) such that for all \(A \subseteq \mathbb{N}\), we have that \(A \in \mathcal{W} + \mathcal{U}\) if and only if
+        \[\{n \in \mathbb{N}: A - n \in \mathcal{W} \} \in \mathcal{U}.\]
     \end{definition}
+
+    \vspace{10pt}
+
+    Importantly, we get that \(\mathcal{W} + \mathcal{U}\) is also an ultrafilter.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Properties of Ultrafilter Addition}
+
+    \begin{example}
+        Ultrafilter addition is not associative. For any ultrafilters \(\mathcal{U}\) and \(\mathcal{W}\), it is not generally true that \(\mathcal{W} + \mathcal{U} = \mathcal{U} + \mathcal{W}\).
+    \end{example}
 
     \pause
 
@@ -304,36 +446,13 @@
 
 \begin{frame}
 	\frametitle{Idempotent Ultrafilters} % Slide title, remove this command for no title
-	
+
 	\begin{theorem}
         There exists a non-principal ultrafilter \(\mathcal{U}\) on \(\mathbb{N}\) such that \(\mathcal{U} + \mathcal{U} = \mathcal{U}\). That is, \(\mathcal{U}\) is said to be idempotent.
     \end{theorem}
-    \vspace{10px}
+
+    \vspace{10pt}
     \pause
-    Let \(\mathcal{U}\) be an idempotent ultrafilter on \(\mathbb{N}\), then we have:\\
-
-    \begin{itemize}
-        \item \(\mathcal{U}\) is non-principal
-        \item If \(A \in \mathcal{U}\), then \(A\) is an infinite subset of \(\mathbb{N}\)
-        \item If \(A_1 \sqcup \cdot \cdot \cdot \sqcup A_k = \mathbb{N}\) is a partition, then exactly one of \(A_i \in \mathcal{U}\)
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Idempotent Ultrafilters} % Slide title, remove this command for no title
-
-    \begin{definition}
-        Given \(A \subseteq \mathbb{N}\) and \(n \in \mathbb{N}\), define \(A-n\) as the shifted subset given by
-        \[A-n = \{m \in \mathbb{N}: n + m \in A\}.\]
-    \end{definition}
-
-    \pause
-
-    Given an ultrafilter \(\mathcal{U}\), we see that the following are equivalent:
-    \[\{n \in \mathbb{N}: A - n \in \mathcal{U}\} = \{n \in \mathbb{N}: A \in n + \mathcal{U}\}.\]
-
-    \pause
-
     Then if \(\mathcal{U}\) is idempotent with \(A \in \mathcal{U}\): \pause
     \begin{itemize}
         \item \(A \in \mathcal{U} + \mathcal{U}\)
@@ -341,9 +460,8 @@
     \end{itemize}
 
     \pause
-
+    \vspace{10pt}
     So, we can define \[A^* = A \cap \{n \in \mathbb{N}: A - n \in \mathcal{U}\},\] and we have that \(A^* \in \mathcal{U}\)!
-
 \end{frame}
 
 \begin{frame}
@@ -365,15 +483,14 @@
 \begin{frame}
     \frametitle{Schur's Theorem}
     \begin{theorem}[Schur's Theorem]
-        Given any 2-colouring \(\gamma: \mathbb{N} \to [2]\), there exist distinct \(x,y \in \mathbb{N}\) such that \(\{x, y, x+ y\}\) is a monochromatic subset.
+        Given any 2-colouring \(\gamma: \mathbb{N} \to \{\text{\textcolor{red}{red}}, \text{\textcolor{blue}{blue}}\}\), there exist distinct \(x,y \in \mathbb{N}\) such that \(\{x, y, x+ y\}\) is a monochromatic subset.
     \end{theorem}
 
     \pause
 
     \vspace{10pt}
 
-    \textit{Proof}. Let \(\mathcal{U}\) be an idempotent ultrafilter on \(\mathbb{N}\) and let \(\gamma: \mathbb{N} \to [2]\) be a 2-colouring on \(\mathbb{N}\), say \textcolor{red}{red} and \textcolor{blue}{blue}.
-    
+    \textit{Proof}. Let \(\mathcal{U}\) be an idempotent ultrafilter on \(\mathbb{N}\) and let \(\gamma: \mathbb{N} \to \{\text{\textcolor{red}{red}}, \text{\textcolor{blue}{blue}}\}\) be a 2-colouring on \(\mathbb{N}\).
     \vspace{10pt}
 
     \pause
@@ -423,10 +540,15 @@
     We can carry on such a construction indefinitely to obtain an \textit{infinite} subset.
 
     \begin{theorem}[Hindman's Theorem]
-        Given a subset \(M \subseteq \mathbb{N}\), the finite sums of \(M\) is the subset FS\((M) \subseteq \mathbb{N}\) such that
-        \[\text{FS}(M) = \Big\{ \sum_{x\in I} x : I \subseteq M \text{ finite nonempty subset} \Big\}.\]
+        Let \(\gamma: \mathbb{N} \to \{\text{\textcolor{red}{red}}, \text{\textcolor{blue}{blue}}\}\) be a 2-colouring of \(\mathbb{N}\). Then there exists an infinite subset \(M \subseteq \mathbb{N}\) such that FS(\(M\)) is monochromatic.
     \end{theorem}
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Last slide}
+
+    Placeholder last slide
 \end{frame}
 
 \begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
@@ -447,7 +569,10 @@
 		\bibitem[FB21]{FB21}
 			Jashan Bal
 			\newblock Ramsey theory
+
 	\end{thebibliography}
+
+    these are unfinished*
 \end{frame}
 
 \end{document}
