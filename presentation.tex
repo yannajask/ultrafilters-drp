@@ -354,21 +354,22 @@
 
 \begin{frame}
     \frametitle{Important Property of Ultrafilters (1)}
-    Let \(\mathcal{F}\) be a filter on \(\mathbb{N}\). 
-    \pause
-    \vspace{10pt}
-    \break Then \(\mathcal{F}\) is an ultrafilter if and only if for every \(A \subseteq \mathbb{N}\), either \(A \in \mathcal{F}\) or \(\mathbb{N} \setminus A \in \mathcal{F}\).
+    \begin{block}{}
+		Let \(\mathcal{F}\) be a filter on \(\mathbb{N}\). Then \(\mathcal{F}\) is an ultrafilter if and only if for every \(A \subseteq \mathbb{N}\), either \(A \in \mathcal{F}\) or \(\mathbb{N} \setminus A \in \mathcal{F}\).
+	\end{block}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Important Property of Ultrafilters (2)}
+    \begin{block}{}
     Let \(\mathcal{U}\) be an ultrafilter on \(\mathbb{N}\) and \(A_1, A_2, ..., A_n \subseteq \mathbb{N}\).
     \pause
     \vspace{10pt}
     \break If \(A_1 \cup A_2 \cup ... \cup A_n = \bigcup\limits_{i=1}^{n} A_{i} \in \mathcal{U}\),
     \vspace{10pt}
-    \break then there exists \(1 \leq j \leq n\), such that \(A_j \in \mathcal{U}\).\\
+    \break then there exists \(1 \leq j \leq n\), such that \(A_j \in \mathcal{U}\).
+    \end{block}
     \pause
     \vspace{10pt}
     If \(\mathcal{U}\) is non-principal, then we get a useful result:\\
@@ -434,22 +435,30 @@
     \frametitle{Properties of Ultrafilter Addition}
 
     \begin{example}
-        Ultrafilter addition is not associative. For any ultrafilters \(\mathcal{U}\) and \(\mathcal{W}\), it is not generally true that \(\mathcal{W} + \mathcal{U} = \mathcal{U} + \mathcal{W}\).
+        If \(\mathcal{U}_n\) and \(\mathcal{U}_m\) are the principal ultrafilters associated to \(n\in \mathbb{N}\) and \(m \in \mathbb{N}\), respectively, then \(\mathcal{U}_n + \mathcal{U}_m = \mathcal{U}_{n+m}\).
     \end{example}
 
     \pause
 
-    \begin{example}
-        If \(\mathcal{U}_n\) and \(\mathcal{U}_m\) are the principal ultrafilters associated to \(n\in \mathbb{N}\) and \(m \in \mathbb{N}\), respectively, then \(\mathcal{U}_n + \mathcal{U}_m = \mathcal{U}_{n+m}\).
-    \end{example}
+    \vspace{10pt}
+
+    In this example, \(\mathcal{U}_n + \mathcal{U}_m = \mathcal{U}_{n+m} = \mathcal{U}_m + \mathcal{U}_n\). So, it might be natural to assume that ultrafilter addition is associative.
+
+    \pause
+
+    \vspace{10pt}
+
+    \begin{block}{Non-Associativity}
+        Ultrafilter addition is not associative. For any ultrafilters \(\mathcal{U}\) and \(\mathcal{W}\), it is not generally true that \(\mathcal{W} + \mathcal{U} = \mathcal{U} + \mathcal{W}\).
+    \end{block}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Idempotent Ultrafilters} % Slide title, remove this command for no title
 
-	\begin{theorem}
+	\begin{lemma}[Ellis-Nakamura Lemma]
         There exists a non-principal ultrafilter \(\mathcal{U}\) on \(\mathbb{N}\) such that \(\mathcal{U} + \mathcal{U} = \mathcal{U}\). That is, \(\mathcal{U}\) is said to be idempotent.
-    \end{theorem}
+    \end{lemma}
 
     \vspace{10pt}
     \pause
@@ -546,9 +555,15 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Last slide}
+    \frametitle{Further Applications}
 
-    Placeholder last slide
+    We focused on infinite sets in our examples, specifically \(\mathbb{N}\). But what about finite cases?
+
+    \pause
+
+    \vspace{10pt}
+
+    Our infinite results can be used to prove their finite counterparts!
 \end{frame}
 
 \begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
@@ -556,23 +571,26 @@
 	
 	\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below, you may need to use multiple columns and/or reduce the font size further if you have many references
 		\footnotesize % Reduce the font size in the bibliography
-		
-		\bibitem[Tricki]{p1}
-            tricki.com
-			\newblock How to use ultrafilters
 			
-		\bibitem[FB22]{FB22}
+		\bibitem[DFB]{p1}
 			David J. Fernandez-Bréton
 			\newblock Using ultrafilters to prove Ramsey-type theorems
 			\newblock \emph{American Mathematical Monthly} 129 no. 2 (2022), 116-131
 
-		\bibitem[FB21]{FB21}
+		\bibitem[JB]{p2}
 			Jashan Bal
 			\newblock Ramsey theory
+        
+		\bibitem[TG]{p3}
+            Timothy Gowers
+			\newblock How to use ultrafilters
+            \newblock https://www.tricki.org/article/How\_to\_use\_ultrafilters
+
+		\bibitem[VT]{p4}
+            Veselin Jungic
+			\newblock Introduction to Ramsey Theory
 
 	\end{thebibliography}
-
-    these are unfinished*
 \end{frame}
 
 \end{document}
