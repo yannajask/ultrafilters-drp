@@ -301,8 +301,6 @@
 
 \begin{frame}
     \frametitle{Filters}
-    An important tool for use in proving the Infinite Ramsey Theorem is a filter.
-    \pause
     \begin{definition}
         A Filter \(\mathcal{F}\) on \(\mathbb{N}\) is a set of subsets of \(\mathbb{N}\) which satisfy the following conditions. 
         \pause
@@ -316,12 +314,12 @@
 
 \begin{frame}
     \frametitle{Ultrafilters}
-    Specifically, ultrafilters are useful. 
-    \pause
     \begin{definition}
         An ultrafilter on \(\mathbb{N}\) is a maximal filter \(\mathcal{U} \subseteq \mathcal{P}(\mathbb{N})\) on \(\mathbb{N}\).
         i.e. if \(\mathcal{F}\) is another filter on \(\mathbb{N}\) such that \(\mathcal{U} \subseteq \mathcal{F}\) then \(\mathcal{U} = \mathcal{F}\).
     \end{definition}
+    \pause
+    Ultrafilters will be useful in proving the Infinite Ramsey Theorem. 
 \end{frame}
 
 \begin{frame}
@@ -381,20 +379,28 @@
 
 % Filters and ultrafilters
 \section{Infinite Ramsey's Theorem}
+
+\begin{frame}
+    \frametitle{Infinite Ramsey Theorem}
+    \begin{theorem}[Infinite Ramsey Theorem]
+        Given any 2-colouring \(\gamma: \mathbb{N} \to \{\text{\textcolor{red}{red}}, \text{\textcolor{blue}{blue}}\}\) of the edges of a complete graph on the natural numbers, there exists an infinite monochromatic subgraph.
+    \end{theorem}
+\end{frame}
+
 \begin{frame}
     \frametitle{Proof of Infinite Ramsey Theorem}
     The proof is quite long so we will provide a general idea.
     \pause
     \vspace{10pt}
-    \break Consider the complete graph on the natural numbers, a red-blue colouring on this graph, and \(\mathcal{U}\), a non-principal ultrafilter on \(\mathbb{N}\).
+    \break Consider the complete graph on the natural numbers, a \(\text{\textcolor{red}{red}}\)-\(\text{\textcolor{blue}{blue}}\) colouring on this graph, and \(\mathcal{U}\), a non-principal ultrafilter on \(\mathbb{N}\).
     \vspace{10pt}
     \pause
     Fixing a particular vertex \(v\) we can partion \(\mathbb{N}\) into a set containing:
     \pause
     \begin{enumerate}
         \item \(v\) itself 
-        \item a set containing all vertices which share a red edge with \(v\)
-        \item and a set containing all vertices which share a blue edge with \(v\)
+        \item a set containing all vertices which share a \(\text{\textcolor{red}{red}}\) edge with \(v\)
+        \item and a set containing all vertices which share a \(\text{\textcolor{blue}{blue}}\) edge with \(v\)
     \end{enumerate}
 
     \vspace{10pt}
@@ -403,8 +409,8 @@
 
      Now since \(\mathcal{U}\) is non-principal the set only containing \(v\) is not in \(\mathcal{U}\).
      So it must be that one of the other sets is by the second important property we provided above.
-     If, for example, it is the blue set you can keep picking vertices infinitely in that set which are in their blue set to get a monochromatic subgraph.
-     The same applies for if it is the red set. 
+     If, for example, it is the \(\text{\textcolor{blue}{blue}}\) set you can keep picking vertices infinitely in that set which are in their \(\text{\textcolor{blue}{blue}}\) set to get a monochromatic subgraph.
+     The same applies for if it is the \(\text{\textcolor{red}{red}}\) set. 
 \end{frame}
 % Idempotent ultrafilters
 \section{Idempotent Ultrafilters and Finite Sums}
