@@ -302,12 +302,12 @@
 \begin{frame}
     \frametitle{Filters}
     \begin{definition}
-        A Filter \(\mathcal{F}\) on \(\mathbb{N}\) is a set of subsets of \(\mathbb{N}\) which satisfy the following conditions. 
+        A filter \(\mathcal{F}\) on \(\mathbb{N}\) is a set of subsets of \(\mathbb{N}\) which satisfy the following conditions:
         \pause
         \begin{enumerate}
             \item \(\mathcal{F}\) is non-empty and \(\emptyset \notin \mathcal{F}\)
             \item If A, B \(\in \mathcal{F} \) then \(A \cap B \in \mathcal{F}\)
-            \item If \(A \in \mathcal{F}\) and \(B \in \mathcal{P}(\mathbb{N})\) satisfies \(A \subseteq B\) then \(B \in \mathcal{F}\)
+            \item If \(A \in \mathcal{F}\) and \(B \subseteq \mathbb{N}\) satisfies \(A \subseteq B\) then \(B \in \mathcal{F}\)
         \end{enumerate}
     \end{definition}
 \end{frame}
@@ -324,31 +324,37 @@
 
 \begin{frame}
     \frametitle{Principal Ultrafilters}
-    Some ultrafilters are principal,
+    Some ultrafilters are principal:
     \pause
     \begin{definition}
         Fix \(n \in \mathbb{N}\).
-        The filter \(\mathcal{F}_n\) is a principal ultrafilter if it contains all subsets of \(\mathbb{N}\) that include the element \(n\). 
+        The filter \(\mathcal{U}_n\) is a principal ultrafilter if it contains all subsets of \(\mathbb{N}\) that include the element \(n\). 
     \end{definition}
     \pause
-    though not all ultrafilters are principal, as we will show now. 
+
+    \begin{example}
+        If a filter \(\mathcal{F}\) contains the singleton set \(\{n\}\) for some \(n \in \mathbb{N}\), then \(\mathcal{F}\) is principal. Moreover, \(\mathcal{F} = \mathcal{U}_n\).
+    \end{example}
+
+    We specifically want to use \textit{non-principal} ultrafilters for our results. We will show that such an ultrafilter does in fact exist.
 \end{frame}
 
 \begin{frame}
     \frametitle{Existence of a Non-Principal Ultrafilter on \(\mathbb{N}\)}
     First consider the Fr\'echet Filter, defined as the set of all co-finite subsets.
-    (i.e. it contains all power sets \(A\) of the natural numbers such that \(\mathbb{N} \setminus A\) is finite.)
+    (i.e. it contains all \(A \subseteq \mathbb{N}\) such that \(\mathbb{N} \setminus A\) is finite.)
     \pause
     \vspace{10pt}
-    \break It can be proven with Zorn's Lemma that if \(\mathcal{F}\) is a filter on \(\mathbb{N}\), then there exists an ultrafilter \(\mathcal{U}\) such that \(\mathcal{F} \subseteq \mathcal{U}\)
+    \break It can be proven with Zorn's Lemma that if \(\mathcal{F}\) is a filter on \(\mathbb{N}\), then there exists an ultrafilter \(\mathcal{U}\) such that \(\mathcal{F} \subseteq \mathcal{U}\).
     \pause
     \vspace{10pt}
-    \break Applying this to the Fr\'echet Filter is used to prove the existence of a non-principal ultrafilter. 
-    This is since there must be an ultrafilter, \(\mathcal{U}\) containing the Fr\'echet Filter. \break
+    \break Applying this to the Fr\'echet Filter is used to prove the existence of a non-principal ultrafilter. That is, there must be an ultrafilter \(\mathcal{U}\) containing the Fr\'echet Filter.\\
+    \vspace{10pt}
     \pause
-    Then if \(A \subseteq \mathbb{N}\) is a finite set it cannot be in \(\mathcal{U}\). \break
-    Then by definition of the Fr\'echet Filter, \(\mathbb{N} \setminus A\) is in the Fr\'echet Filter which is a subset of \(\mathcal{U}\). \break
-    So \(\mathcal{U}\) cannot be a principal ultrafilter. 
+    Then if \(A \subseteq \mathbb{N}\) is a finite set it cannot be in \(\mathcal{U}\).
+    This is since \(\mathbb{N} \setminus A\) is in the Fr\'echet Filter, which is a subset of \(\mathcal{U}\).\\
+    \vspace{10pt}
+    Therefore \(\mathcal{U}\) cannot be a principal ultrafilter. \qed 
 \end{frame}
 
 \begin{frame}
@@ -392,25 +398,25 @@
     The proof is quite long so we will provide a general idea.
     \pause
     \vspace{10pt}
-    \break Consider the complete graph on the natural numbers, a \(\text{\textcolor{red}{red}}\)-\(\text{\textcolor{blue}{blue}}\) colouring on this graph, and \(\mathcal{U}\), a non-principal ultrafilter on \(\mathbb{N}\).
+    \break Consider the complete graph on the natural numbers, a \(\text{\textcolor{red}{red}}\)-\(\text{\textcolor{blue}{blue}}\) colouring on this graph, and \(\mathcal{U}\), a non-principal ultrafilter on \(\mathbb{N}\).\\
     \vspace{10pt}
     \pause
-    Fixing a particular vertex \(v\) we can partion \(\mathbb{N}\) into a set containing:
+    Fixing a particular vertex \(v\) we can partition \(\mathbb{N}\) into the sets:
     \pause
     \begin{enumerate}
-        \item \(v\) itself 
-        \item a set containing all vertices which share a \(\text{\textcolor{red}{red}}\) edge with \(v\)
-        \item and a set containing all vertices which share a \(\text{\textcolor{blue}{blue}}\) edge with \(v\)
+        \item \(v\) itself, \(\{v\}\)
+        \item \(A_v = \) all vertices which share a \(\text{\textcolor{red}{red}}\) edge with \(v\)
+        \item \(B_v = \) all vertices which share a \(\text{\textcolor{blue}{blue}}\) edge with \(v\)
     \end{enumerate}
 
     \vspace{10pt}
 
     \pause
 
-     Now since \(\mathcal{U}\) is non-principal the set only containing \(v\) is not in \(\mathcal{U}\).
-     So it must be that one of the other sets is by the second important property we provided above.
-     If, for example, it is the \(\text{\textcolor{blue}{blue}}\) set you can keep picking vertices infinitely in that set which are in their \(\text{\textcolor{blue}{blue}}\) set to get a monochromatic subgraph.
-     The same applies for if it is the \(\text{\textcolor{red}{red}}\) set. 
+     Now since \(\mathcal{U}\) is non-principal, the set \(\{v\}\) is not in \(\mathcal{U}\).
+     So it must be that exactly one of \(A_v\) or \(B_v\) is in \(\mathcal{U}\). So, suppose \(B_v \in \mathcal{U}\).\\
+    \vspace{10pt}
+    Then, we can keep picking verticles \(v_i\) from \(B_v\) such that \(B_{v_i} \in \mathcal{U}\) to obtain an infinite set of vertices which all share \textcolor{blue}{blue} edges. Hence, we get a monochromatic infinite complete subgraph. \qed
 \end{frame}
 % Idempotent ultrafilters
 \section{Idempotent Ultrafilters and Finite Sums}
@@ -422,6 +428,12 @@
         \[A-n = \{m \in \mathbb{N}: n + m \in A\}.\]
     \end{definition}
 
+    \pause
+
+    \begin{example}
+        Given \(A = \{1, 2, 3, 4, 5\}\) and \(n = 2\), we have \(A - n = \{3, 4, 5\}\).
+    \end{example}
+
     \vspace{10pt}
 
     \pause 
@@ -432,14 +444,16 @@
         Let \(\mathcal{U}\) and \(\mathcal{W}\) be ultrafilters on \(\mathbb{N}\). We define \(\mathcal{W} + \mathcal{U}\) such that for all \(A \subseteq \mathbb{N}\), we have that \(A \in \mathcal{W} + \mathcal{U}\) if and only if
         \[\{n \in \mathbb{N}: A - n \in \mathcal{W} \} \in \mathcal{U}.\]
     \end{definition}
-
-    \vspace{10pt}
-
-    Importantly, we get that \(\mathcal{W} + \mathcal{U}\) is also an ultrafilter.
 \end{frame}
 
 \begin{frame}
     \frametitle{Properties of Ultrafilter Addition}
+
+    \begin{block}{Closure}
+        If \(\mathcal{U}\) and \(\mathcal{W}\) are ultrafilters on \(\mathbb{N}\), then \(\mathcal{W}+\mathcal{U}\) is also an ultrafilter.
+    \end{block}
+
+    \pause
 
     \begin{example}
         If \(\mathcal{U}_n\) and \(\mathcal{U}_m\) are the principal ultrafilters associated to \(n\in \mathbb{N}\) and \(m \in \mathbb{N}\), respectively, then \(\mathcal{U}_n + \mathcal{U}_m = \mathcal{U}_{n+m}\).
@@ -542,11 +556,11 @@
 
     \vspace{10pt}
 
-    Since \(x_2 \in A - x_1\), we have that \(x_1 + x_2 \in A\).\\
+    That is, \(x_1 + x_2 \in A\).\\
     
     \vspace{10pt}
 
-    So \(x_1, x_2\), and \(x_1 + x_2\) are all \(\gamma\)-\textcolor{red}{red}!
+    So \(x_1, x_2\), and \(x_1 + x_2\) are all \(\gamma\)-\textcolor{red}{red}! \qed
 
 \end{frame}
 
