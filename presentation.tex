@@ -463,7 +463,7 @@
 
     \vspace{10pt}
 
-    In this example, \(\mathcal{U}_n + \mathcal{U}_m = \mathcal{U}_{n+m} = \mathcal{U}_m + \mathcal{U}_n\). So, it might be natural to assume that ultrafilter addition is associative.
+    In this example, \(\mathcal{U}_n + \mathcal{U}_m = \mathcal{U}_{n+m} = \mathcal{U}_m + \mathcal{U}_n\). Is this always the case?
 
     \pause
 
@@ -540,7 +540,7 @@
     Since \(\mathcal{U}\) is idempotent, we have \(A^* = A \cap \{n \in \mathbb{N}: A - n \in \mathcal{U}\} \in \mathcal{U}\). So, pick \(x_1 \in A^*\). We get that: \pause
 
     \begin{itemize}
-        \item \(x_1 \in A\)
+        \item \(x_1 \in A\), so \(x_1\) is \textcolor{red}{red}
         \item \(A-x_1 \in \mathcal{U}\)
     \end{itemize}
 
@@ -548,29 +548,25 @@
 
     \vspace{10pt}
 
-    Let \(A_1 = A \cap (A-x_1)\) and pick \(x_2 \in A_1^* = A_1 \cap \{n \in \mathbb{N}: A_1 - n \in \mathcal{U} \}\). Then, we have: \pause
+    Let \(A_1 = A \cap (A-x_1) \in \mathcal{U}\) and pick \(x_2 \in A_1\). Then, we have:\\
     \begin{itemize}
-        \item \(x_2 \in A_1\), so \(x_2 \in A\)
-        \item \(x_2 \in A-x_1\) \pause
+        \item \(x_2 \in A\), so \(x_2\) is \textcolor{red}{red}
+        \item \(x_2 \in A-x_1\), so \(x_1 + x_2 \in A\) \pause
     \end{itemize}
-
-    \vspace{10pt}
-
-    That is, \(x_1 + x_2 \in A\).\\
     
     \vspace{10pt}
 
-    So \(x_1, x_2\), and \(x_1 + x_2\) are all \(\gamma\)-\textcolor{red}{red}! \qed
+    Therefore \(x_1, x_2\), and \(x_1 + x_2\) are all \(\gamma\)-\textcolor{red}{red}! \qed
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Hindman's Theorem}
 
-    We can carry on such a construction indefinitely to obtain an \textit{infinite} subset.
+    We can carry on a (similar) construction indefinitely to obtain an \textit{infinite} subset.
 
     \begin{theorem}[Hindman's Theorem]
-        Let \(\gamma: \mathbb{N} \to \{\text{\textcolor{red}{red}}, \text{\textcolor{blue}{blue}}\}\) be a 2-colouring of \(\mathbb{N}\). Then there exists an infinite subset \(M \subseteq \mathbb{N}\) such that FS(\(M\)) is monochromatic.
+        Let \(\gamma: \mathbb{N} \to \{\text{\textcolor{red}{red}}, \text{\textcolor{blue}{blue}}\}\) be a 2-colouring of \(\mathbb{N}\). Then there exists an infinite set \(M = \{x_1, x_2, ... \} \subseteq \mathbb{N}\) such that FS(\(M\)) is monochromatic.
     \end{theorem}
 
 \end{frame}
