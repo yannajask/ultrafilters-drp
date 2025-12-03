@@ -483,7 +483,7 @@
 
     \vspace{10pt}
     \pause
-    Then if \(\mathcal{U}\) is idempotent with \(A \in \mathcal{U}\): \pause
+    Then if \(\mathcal{U}\) is idempotent with \(A \in \mathcal{U}\):
     \begin{itemize}
         \item \(A \in \mathcal{U} + \mathcal{U}\)
         \item \(\{n \in \mathbb{N}: A - n \in \mathcal{U}\} \in \mathcal{U}\)
@@ -537,26 +537,26 @@
 \begin{frame}
     \frametitle{Proof of Schur's Theorem}
 
-    Since \(\mathcal{U}\) is idempotent, we have \(A^* = A \cap \{n \in \mathbb{N}: A - n \in \mathcal{U}\} \in \mathcal{U}\). So, pick \(x_1 \in A^*\). We get that: \pause
+    Since \(\mathcal{U}\) is idempotent, we have \(A^* = A \cap \{n \in \mathbb{N}: A - n \in \mathcal{U}\} \in \mathcal{U}\). So, pick \(x \in A^*\). We get that: \pause
 
     \begin{itemize}
-        \item \(x_1 \in A\), so \(x_1\) is \textcolor{red}{red}
-        \item \(A-x_1 \in \mathcal{U}\)
+        \item \(x\) is \textcolor{red}{red}, since \(x \in A\)
+        \item \(A-x \in \mathcal{U}\)
     \end{itemize}
 
     \pause
 
     \vspace{10pt}
 
-    Let \(A_1 = A \cap (A-x_1) \in \mathcal{U}\) and pick \(x_2 \in A_1\). Then, we have:\\
+    Let \(A_1 = A \cap (A-x) \in \mathcal{U}\) and pick \(y \in A_1\). Then, we have:\\
     \begin{itemize}
-        \item \(x_2 \in A\), so \(x_2\) is \textcolor{red}{red}
-        \item \(x_2 \in A-x_1\), so \(x_1 + x_2 \in A\) \pause
+        \item \(y\) is \textcolor{red}{red}, since \(y \in A\)
+        \item \(x + y \in A\), since \(y \in A-x\) \pause
     \end{itemize}
     
     \vspace{10pt}
 
-    Therefore \(x_1, x_2\), and \(x_1 + x_2\) are all \(\gamma\)-\textcolor{red}{red}! \qed
+    Therefore \(x, y\), and \(x + y\) are all \(\gamma\)-\textcolor{red}{red}! \qed
 
 \end{frame}
 
@@ -574,13 +574,13 @@
 \begin{frame}
     \frametitle{Further Applications}
 
-    We focused on infinite sets in our examples, specifically \(\mathbb{N}\). But what about finite cases?
+    What about finite cases?
 
     \pause
 
     \vspace{10pt}
 
-    Our infinite results can be used to prove their finite counterparts!
+    What about more than two colours?
 \end{frame}
 
 \begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
@@ -608,6 +608,13 @@
 			\newblock Introduction to Ramsey Theory
 
 	\end{thebibliography}
+\end{frame}
+
+\begin{frame}
+    \bigskip\bigskip
+    \begin{center}
+        {\LARGE Thank you!}
+    \end{center}
 \end{frame}
 
 \end{document}
